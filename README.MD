@@ -47,3 +47,8 @@ Make sure that the server is working properly by
 ```
 npm start
 ```
+
+## client
+```
+npx create-react-app client
+```
