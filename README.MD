@@ -1,1 +1,49 @@
-Hello world
+# reference
+
+https://vitamindev.com/react/chat-with-socket-io/
+
+# preparation
+
+## server
+
+Input following command
+
+```
+mkdir server
+cd server
+npm init
+npm install --save socket.io express
+```
+
+Make `index.js` as
+```
+const http = require("http");
+const express = require("express");
+const cors = require("cors");
+const coketIo = require("socket.io");
+
+var server = http.createServer();
+
+const app = express();
+app.use(cors());
+
+const PORT = 4000;
+
+server.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
+});
+```
+
+Add following code to package.json
+
+```
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+}
+```
+
+Make sure that the server is working properly by
+```
+npm start
+```
