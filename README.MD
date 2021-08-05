@@ -16,6 +16,7 @@ npm install --save socket.io express
 ```
 
 Make `index.js` as
+
 ```
 const http = require("http");
 const express = require("express");
@@ -44,11 +45,31 @@ Add following code to package.json
 ```
 
 Make sure that the server is working properly by
+
 ```
 npm start
 ```
 
+Nodemon is useful for development.
+
+```
+npm i -D nodemon
+```
+
+package.json
+
+```
+"sucripts": "nodemon inde.js
+```
+
+To start
+
+```
+npm run dev
+```
+
 ## client
+
 ```
 npx create-react-app client
 ```
