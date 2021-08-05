@@ -6,6 +6,7 @@ const ENDPOINT = "localhost:4000";
 const socket = socketIOClient(ENDPOINT);
 
 function App() {
+  const [message, setMessage] = useState("Hello");
   useEffect(() => {
     const socket = socketIOClient(ENDPOINT);
     socket.on("connect");
@@ -13,11 +14,12 @@ function App() {
 
   socket.on("hello", (data) => {
     console.log(data);
+    setMessage(data);
   });
 
   return (
     <div className="App">
-      <h1>hello</h1>
+      <h1>{message}</h1>
     </div>
   );
 }

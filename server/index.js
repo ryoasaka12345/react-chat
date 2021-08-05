@@ -21,7 +21,10 @@ const io = socketIo(server, {
 
 io.on("connection", socket => {
     console.log(`New client connect`);
-    socket.emit("hello", "world");
+    socket.on("hello", (data) => {
+        console.log(data);
+    });
+    socket.emit("hello", "Wellcome to Asaka's chat room");
 });
 
 // launch server 
