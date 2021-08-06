@@ -47,13 +47,17 @@ function App() {
     socket.emit("message", sendItem);
   }
 
+  const consoleInput = () => {
+    console.log(messageInput.current.value);
+  }
+
   return (
     <div className="App">
       <h1>{roomName}</h1>
       <div>{messageLog}</div>
       <form onSubmit={submitHandler}>
-        <input type="text" ref={messageInput}></input>
-        <input type="submit"></input>
+        <input type="text" ref={messageInput} onChange={consoleInput}></input>
+        <button type="submit">submit</button>
       </form>
     </div>
   );
