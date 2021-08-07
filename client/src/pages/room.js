@@ -1,7 +1,9 @@
-import ChatContents from "../components/body/chatContents.js";
+import ChatContents from "../components/main/chatContents.js";
 
 function Room() {
-    return <ChatContents />
+    return (
+        <ChatContents />
+    );
 }
 
 export default Room;

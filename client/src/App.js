@@ -11,7 +11,7 @@ function App() {
         <Route path="/" exact>
           <IndexPage />
         </Route>
-        <Route path="/room">
+        <Route path="/room/:id">
           <Room />
         </Route>
       </Switch>
