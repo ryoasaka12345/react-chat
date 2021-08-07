@@ -30,7 +30,8 @@ const io = socketIo(server, {
 io.on("connection", socket => {
     socket.emit("hello", "Wellcome to Asaka's chat room");
     socket.emit("messages", messages);
-
+    console.log("user connected");
+    
     // message log
     socket.on("message", message => {
         console.log(message);
