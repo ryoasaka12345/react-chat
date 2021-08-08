@@ -14,14 +14,21 @@ app.use(cors());
 /* websocket */
 const io = socketIo(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: ["http://localhost:3000", "http://localhost:3001"],
         methods: ["GET", "POST"],
         credentials: true,
     },
 });
 
+let messages = {
+    "1": [{ name: "master", mess: "This is room 1" }],
+    "2": [{ name: "master", mess: "This is room 2" }],
+    "3": [{ name: "master", mess: "This is room 3" }],
+    "4": [{ name: "master", mess: "This is room 4" }]
+};
+
 io.on("connection", socket => {
-    require("./socket.js")(io, socket);
+    require("./socket.js")(io, socket, messages);
 });
 
 /* launch server  */
