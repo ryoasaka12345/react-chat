@@ -3,7 +3,6 @@ const express = require("express"); // helps manage sarver
 const cors = require("cors"); // make the backend to the frontend per CORS.
 const socketIo = require("socket.io");
 const { create } = require("domain");
-const { socketHandler } = require("./socket.js");
 
 /* build server */
 var server = http.createServer();
@@ -22,7 +21,7 @@ const io = socketIo(server, {
 });
 
 io.on("connection", socket => {
-    socketHandler(socket);
+    require("./socket.js")(io, socket);
 });
 
 /* launch server  */

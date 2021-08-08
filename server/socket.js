@@ -1,4 +1,4 @@
-const socketHandler = (socket) => {
+const socketHandler = (io, socket) => {
 
     let messages = {
         "1": [{ name: "master", mess: "This is room 1" }],
@@ -11,8 +11,12 @@ const socketHandler = (socket) => {
 
     socket.on("join", (roomId) => {
         socket.join(roomId);
-        // io.to(roomId).emit("messages", messages[roomId]);
-        console.log("completed join");
+    });
+
+    socket.on("hello", (roomId) => {
+        message = { name: "master", mess: `hello ${socket.id} !` }
+        messages[roomId] = [...messages[roomId], message];
+        io.to(roomId).emit("messages", messages[roomId]);
     });
 
     socket.on("leave", (roomId) => {

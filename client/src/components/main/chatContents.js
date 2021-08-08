@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { SocketContext } from "../../contexts/socket.js";
 
@@ -7,18 +7,10 @@ function ChatContents() {
     const inputText = useRef();
     const [receivedMessage, setReceivedMessage] = useState();
     let { id } = useParams();
-    
-    socket.on("messages", (messages) => {
-        setReceivedMessage(messages.map((message) => (
-            <p>
-                {message.name} :
-                {message.mess}
-            </p>
-        )));
-    });
 
-    socket.emit("join", id);
-
+    /* 
+    Handlers
+    */
     const submitHandler = () => {
         const sendItem = {
             name: "user",
@@ -31,6 +23,26 @@ function ChatContents() {
         console.log("leave Room", id);
         socket.emit("leave", id);
     }
+
+    /* 
+    Socket Handler
+    */
+    socket.on("messages", (messages) => {
+        setReceivedMessage(messages.map((message) => (
+            <p>
+                {message.name} :
+                {message.mess}
+            </p>
+        )));
+    });
+
+    /* 
+        join room
+    */
+    useEffect(() => {
+        socket.emit("join", id);
+        socket.emit("hello", id);
+    }, []);
 
     return (
         <div>
