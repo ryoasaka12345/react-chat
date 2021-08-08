@@ -7,7 +7,7 @@ function ChatContents() {
     const inputText = useRef();
     const [receivedMessage, setReceivedMessage] = useState();
     let { id } = useParams();
-
+    
     socket.on("messages", (messages) => {
         setReceivedMessage(messages.map((message) => (
             <p>
@@ -17,12 +17,19 @@ function ChatContents() {
         )));
     });
 
+    socket.emit("join", id);
+
     const submitHandler = () => {
         const sendItem = {
             name: "user",
             mess: inputText.current.value
         }
-        socket.emit("message", sendItem);
+        socket.emit("message", sendItem, id);
+    }
+
+    const leaveHandler = () => {
+        console.log("leave Room", id);
+        socket.emit("leave", id);
     }
 
     return (
@@ -34,7 +41,7 @@ function ChatContents() {
                 <button onClick={submitHandler}>submit</button>
             </div>
             <div>
-                <NavLink to="/">Back to home</NavLink>
+                <NavLink to="/" onClick={leaveHandler}>Back to home</NavLink>
             </div>
         </div>
     );
