@@ -1,6 +1,11 @@
-# reference
+# Reference
 
 https://vitamindev.com/react/chat-with-socket-io/
+
+# Branches
+- step 1: demonstration socketio
+- step 2: create chat room
+- step 3: create database for chat log 
 
 # preparation
 
