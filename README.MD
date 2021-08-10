@@ -82,13 +82,13 @@ npm i react-router-dom
 
 # Reference
 
-- environment
-  https://www.tuyano.com/index3?id=1126003
+- environment  
+  https://www.tuyano.com/index3?id=1126003  
 
-- websocket
-  https://vitamindev.com/react/chat-with-socket-io/
-  https://strapi.io/blog/how-to-build-a-real-time-chat-forum-using-strapi-socket-io-react-and-mongo-db
-  https://tsh.io/blog/socket-io-tutorial-real-time-communication/
+- websocket  
+  https://vitamindev.com/react/chat-with-socket-io/  
+  https://strapi.io/blog/how-to-build-a-real-time-chat-forum-using-strapi-socket-io-react-and-mongo-db  
+  https://tsh.io/blog/socket-io-tutorial-real-time-communication/  
 
-- mysql
-  https://www.w3schools.com/nodejs/nodejs_mysql_create_db.asp
+- mysql  
+  https://www.w3schools.com/nodejs/nodejs_mysql_create_db.asp  
