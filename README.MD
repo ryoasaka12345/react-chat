@@ -73,6 +73,11 @@ To start
 npm run dev
 ```
 
+Install mysql
+```
+npm install mysql
+```
+
 ## client
 
 ```
