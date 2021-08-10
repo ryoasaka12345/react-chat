@@ -11,6 +11,7 @@ https://vitamindev.com/react/chat-with-socket-io/
 
 ## server
 
+### step1
 Input following command
 
 ```
@@ -72,17 +73,25 @@ To start
 ```
 npm run dev
 ```
+### step2
+none
 
+### step3
 Install mysql
 ```
 npm install mysql
 ```
 
 ## client
+### step1
 
 ```
 npx create-react-app client
 ```
+
+### step2
 ```
 npm i react-router-dom
 ```
+
+### step3
