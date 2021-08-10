@@ -30,16 +30,37 @@ con_sql.connect((err) => {
 });
 
 const roomIDs = [1, 2, 3, 4]
+// create a log for each room.
 roomIDs.forEach((roomID) => {
-    query_create_table = `
-        CREATE TABLE IF NOT EXISTS 
-        chat_log_room${roomID}(name VARCHAR(255), message VARCHAR(255))
-        `;
+    // create
+    con_sql.query(`
+            CREATE TABLE IF NOT EXISTS 
+            chat_log_room${roomID}(name VARCHAR(255), message VARCHAR(255))
+            `,
+        (err, result) => {
+            if (err) throw err;
+            console.log(`Table${roomID} created`);
+        });
 
-    con_sql.query(query_create_table, (err, result) => {
-        if (err) throw err;
-        console.log("Table created");
-    });
+    // insert initial chatlog
+    con_sql.query(`
+            SELECT * FROM chat_log_room${roomID}
+        `,
+        (err, result) => {
+            if (err) throw err;
+            if (result.length == 0) {
+                con_sql.query(`
+                    INSERT INTO chat_log_room${roomID} (name, message)
+                    value ("master", "this is room ${roomID}")
+                    `,
+                    (err, result) => {
+                        if (err) throw err;
+                        console.log(`insert init log to room ${roomID}`);
+                    }
+                );
+            }
+        }
+    );
 });
 
 /* websocket */
@@ -59,7 +80,7 @@ let messages = {
 };
 
 io.on("connection", socket => {
-    require("./socket.js")(io, socket, messages);
+    require("./socket.js")(io, socket, messages, con_sql);
 });
 
 
