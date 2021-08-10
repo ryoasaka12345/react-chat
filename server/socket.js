@@ -1,24 +1,24 @@
 const socketHandler = (io, socket, messages) => {
     console.log(`${socket.id} is connected`);
 
-    socket.on("join", (roomId) => {
-        socket.join(roomId);
+    socket.on("join", (roomID) => {
+        socket.join(roomID);
     });
 
-    socket.on("hello", (roomId) => {
+    socket.on("hello", (roomID) => {
         message = { name: "master", mess: `hello ${socket.id} !` }
-        messages[roomId] = [...messages[roomId], message];
-        io.to(roomId).emit("messages", messages[roomId]);
+        messages[roomID] = [...messages[roomID], message];
+        io.to(roomID).emit("messages", messages[roomID]);
     });
 
-    socket.on("leave", (roomId) => {
-        socket.leave(roomId);
-        console.log("user disconnect room", roomId);
+    socket.on("leave", (roomID) => {
+        socket.leave(roomID);
+        console.log("user disconnect room", roomID);
     });
 
-    socket.on("message", (message, roomId) => {
-        messages[roomId] = [...messages[roomId], message];
-        io.to(roomId).emit("messages", messages[roomId]);
+    socket.on("message", (message, roomID) => {
+        messages[roomID] = [...messages[roomID], message];
+        io.to(roomID).emit("messages", messages[roomID]);
     });
 
 }

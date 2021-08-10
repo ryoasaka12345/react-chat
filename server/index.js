@@ -29,10 +29,17 @@ con_sql.connect((err) => {
     console.log("Connected!");
 });
 
-var sql = "CREATE TABLE chat_log (name VARCHAR(255), message VARCHAR(255))";
-con_sql.query(sql, (err, result) => {
-    if (err) throw err;
-    console.log("Table created");
+const roomIDs = [1, 2, 3, 4]
+roomIDs.forEach((roomID) => {
+    query_create_table = `
+        CREATE TABLE IF NOT EXISTS 
+        chat_log_room${roomID}(name VARCHAR(255), message VARCHAR(255))
+        `;
+
+    con_sql.query(query_create_table, (err, result) => {
+        if (err) throw err;
+        console.log("Table created");
+    });
 });
 
 /* websocket */
