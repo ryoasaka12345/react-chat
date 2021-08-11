@@ -12,8 +12,8 @@ var server = http.createServer();
 
 
 /* helps manage sarver */
-const app = express();
-app.use(cors());
+// const app = express();
+// app.use(cors());
 
 
 /* mysql */
@@ -35,7 +35,7 @@ roomIDs.forEach((roomID) => {
     // create
     con_sql.query(`
             CREATE TABLE IF NOT EXISTS 
-            chat_log_room${roomID}(name VARCHAR(255), message VARCHAR(255))
+            chat_log_room${roomID}(name VARCHAR(255), mess VARCHAR(255))
             `,
         (err, result) => {
             if (err) throw err;
@@ -50,7 +50,7 @@ roomIDs.forEach((roomID) => {
             if (err) throw err;
             if (result.length == 0) {
                 con_sql.query(`
-                    INSERT INTO chat_log_room${roomID} (name, message)
+                    INSERT INTO chat_log_room${roomID} (name, mess)
                     value ("master", "this is room ${roomID}")
                     `,
                     (err, result) => {
@@ -73,10 +73,10 @@ const io = socketIo(server, {
 });
 
 let messages = {
-    "1": [{ name: "master", mess: "This is room 1" }],
-    "2": [{ name: "master", mess: "This is room 2" }],
-    "3": [{ name: "master", mess: "This is room 3" }],
-    "4": [{ name: "master", mess: "This is room 4" }]
+    "1": [],
+    "2": [],
+    "3": [],
+    "4": []
 };
 
 io.on("connection", socket => {
