@@ -1,6 +1,6 @@
 import { useContext, useRef, useState, useEffect } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import { SocketContext } from "../../contexts/socket.js";
+import { SocketContext } from "../../../contexts/socket";
 
 function ChatContents() {
     const socket = useContext(SocketContext);

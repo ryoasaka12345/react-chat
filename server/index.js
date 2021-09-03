@@ -66,7 +66,7 @@ roomIDs.forEach((roomID) => {
 /* websocket */
 const io = socketIo(server, {
     cors: {
-        origin: ["http://localhost:3000", "http://localhost:3001"],
+        origin: ["http://localhost:3001", "http://localhost:3002"],
         methods: ["GET", "POST"],
         credentials: true,
     },
@@ -85,7 +85,7 @@ io.on("connection", socket => {
 
 
 /* launch server  */
-const PORT = 4000;
+const PORT = 5000;
 server.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });

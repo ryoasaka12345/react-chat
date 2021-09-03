@@ -1,5 +1,5 @@
 import React from "react";  
-import Home from "../components/main/home.js";
+import Home from "../components/features/home/home";
 
 function IndexPage() {
     return <Home />

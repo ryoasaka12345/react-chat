@@ -1,4 +1,4 @@
-import ChatContents from "../components/main/chatContents.js";
+import ChatContents from "../components/main/chatContents";
 
 function Room() {
     return (

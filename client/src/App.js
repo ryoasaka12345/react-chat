@@ -1,8 +1,9 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import IndexPage from "./pages/indexPage.js";
-import Room from "./pages/room.js";
-import { SocketContext, socket } from "./contexts/socket.js";
+import IndexPage from "./pages/indexPage";
+import Room from "./pages/room";
+import { SocketContext, socket } from "./contexts/socket";
+import Shop from "./pages/shop";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         </Route>
         <Route path="/room/:id">
           <Room />
+        </Route>
+        <Route path="/shop">
+          <Shop />
         </Route>
       </Switch>
     </SocketContext.Provider>

@@ -6,6 +6,9 @@ const Home = () => {
         <div>
             <h1>This is home</h1>
             <li>
+                <NavLink to="/shop">SHOP</NavLink>
+            </li>
+            <li>
                 <NavLink to="/room/1">Room 1</NavLink>
             </li>
             <li>
