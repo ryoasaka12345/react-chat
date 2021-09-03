@@ -29,7 +29,7 @@ con_sql.connect((err) => {
     console.log("Connected!");
 });
 
-const roomIDs = [1, 2, 3, 4]
+const roomIDs = [0, 1, 2, 3]
 // create a log for each room.
 roomIDs.forEach((roomID) => {
     // create
@@ -73,10 +73,10 @@ const io = socketIo(server, {
 });
 
 let messages = {
+    "0": [],
     "1": [],
     "2": [],
-    "3": [],
-    "4": []
+    "3": []
 };
 
 io.on("connection", socket => {

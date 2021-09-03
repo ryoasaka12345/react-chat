@@ -7,6 +7,7 @@ import { SocketContext, socket } from "./contexts/socket";
 function App() {
   return (
     <SocketContext.Provider value={socket}>
+      <h2>Well come to the market.</h2>
       <Switch>
         <Route path="/" exact>
           <IndexPage />
