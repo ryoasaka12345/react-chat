@@ -5,7 +5,7 @@ const Home = () => {
   return (
     <div>
       <h2>This is home</h2>
-      <NavLink to="/chat">Chat Room</NavLink>
+      <NavLink to="/chat">Go Market</NavLink>
     </div>
   );
 };

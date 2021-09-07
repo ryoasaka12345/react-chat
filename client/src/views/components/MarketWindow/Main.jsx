@@ -1,7 +1,7 @@
 import { Items } from "../../containers/Market";
 
-const Market = () => {
+const MarketWindow = () => {
   return <Items/>;
 };
 
-export default Market;
+export default MarketWindow;

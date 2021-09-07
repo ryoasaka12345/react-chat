@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { Home } from "./components/Home";
-import { Chat } from "./components/Chat";
+import { Rooms } from "./components/Rooms";
 import "./App.css";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/chat">
-          <Chat />
+          <Rooms />
         </Route>
       </Switch>
     </>

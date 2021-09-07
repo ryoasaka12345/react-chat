@@ -1,7 +1,7 @@
 import { CartContents } from "../../containers/Cart";
 
-const Cart = () => {
+const CartWindow = () => {
   return <CartContents />;
 };
 
-export default Cart;
+export default CartWindow;
