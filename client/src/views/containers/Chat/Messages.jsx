@@ -6,7 +6,6 @@ const Messages = () => {
   let { id } = useParams();
 
   const messages = useSelector((state) => state.chat.util[id]);
-  console.log(messages);
 
   return (
     <List
@@ -15,7 +14,7 @@ const Messages = () => {
       dataSource={messages}
       renderItem={(message) => (
         <li>
-          <Comment author={message.author} content={message.content} />{" "}
+          <Comment author={message.author} content={message.content} />
         </li>
       )}
     />

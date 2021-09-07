@@ -33,21 +33,23 @@ const Rooms = () => {
       <Divider orientation="left">Messages</Divider>
 
       <Row gutter={20}>
-        <Col span={6}>
-          <Card title="chat board">
-            <Switch>
-              <Route path={path} exact>
-                <div>Select Chat room</div>
-              </Route>
-              <Route path={`${path}/:id`}>
+        <Switch>
+          <Route path={path} exact>
+            <Col span={16}>
+              <div>Select Chat room</div>
+            </Col>
+          </Route>
+          <Route path={`${path}/:id`}>
+            <Col span={6}>
+              <Card title="chat borard">
                 <MessageWindow />
-              </Route>
-            </Switch>
-          </Card>
-        </Col>
-        <Col span={10}>
-          <MarketWindow />
-        </Col>
+              </Card>
+            </Col>
+            <Col span={10}>
+              <MarketWindow />
+            </Col>
+          </Route>
+        </Switch>
         <Col span={8}>
           <CartWindow />
         </Col>
@@ -57,3 +59,21 @@ const Rooms = () => {
 };
 
 export default Rooms;
+
+{
+  /* <Col span={6}>
+  <Card title="chat board">
+    <Switch>
+      <Route path={path} exact>
+        <div>Select Chat room</div>
+      </Route>
+      <Route path={`${path}/:id`}>
+        <MessageWindow />
+      </Route>
+    </Switch>
+  </Card>
+</Col>
+<Col span={10}>
+  <MarketWindow />
+</Col> */
+}
