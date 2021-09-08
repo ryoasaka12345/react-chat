@@ -21,7 +21,7 @@ const CartContents = () => {
   });
 
   return (
-    <Card title="my cart">
+    <Card title="my inventory">
       <li>barance: {summary.barance}</li>
       <li>quantity: {summary.quantity}</li>
       <li>totalCap: {summary.totalCap}</li>

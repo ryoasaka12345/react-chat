@@ -1,37 +1,15 @@
 import { combineReducers } from "redux";
+import { io } from "socket.io-client";
 
-const initialState = [
-  [
-    {
-      author: "Master of Room 0",
-      content: "this is Room 0",
-    },
-  ],
-  [
-    {
-      author: "Master of Room 1",
-      content: "this is Room 1",
-    },
-  ],
-  [
-    {
-      author: "Master of Room 2",
-      content: "this is Room 2",
-    },
-  ],
-  [
-    {
-      author: "Master of Room 3",
-      content: "this is Room 3",
-    },
-  ],
-  [
-    {
-      author: "Master of Room 4",
-      content: "this is Room 4",
-    },
-  ],
-];
+const initialState = [];
+
+const ENDPOINT = "localhost:5000";
+const socket = io(ENDPOINT);
+socket.on("hello", (messages) => {
+  messages.forEach((message) => {
+    initialState.push(message);
+  });
+});
 
 const util = (state = initialState, action) => {
   switch (action.type) {
