@@ -1,1 +1,5 @@
-const SEND_MESSAGE = `SEND_MESSAGE`;
+const ADD_MESSAGES = `ADD_MESSAGES`;
+
+export default {
+  ADD_MESSAGES,
+};

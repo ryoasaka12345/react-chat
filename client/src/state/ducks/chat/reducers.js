@@ -1,18 +1,14 @@
 import { combineReducers } from "redux";
-import { io } from "socket.io-client";
-
+import types from "./types";
 const initialState = [];
-
-const ENDPOINT = "localhost:5000";
-const socket = io(ENDPOINT);
-socket.on("hello", (messages) => {
-  messages.forEach((message) => {
-    initialState.push(message);
-  });
-});
 
 const util = (state = initialState, action) => {
   switch (action.type) {
+    case types.ADD_MESSAGES:
+      action.messages.forEach((message) => {
+        state.push(message);
+      });
+      return state;
     default:
       return state;
   }
