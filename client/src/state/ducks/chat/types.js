@@ -1,5 +1,7 @@
+const INIT_MESSAGES = `INIT_MESSAGES`;
 const ADD_MESSAGES = `ADD_MESSAGES`;
 
 export default {
+  INIT_MESSAGES,
   ADD_MESSAGES,
 };

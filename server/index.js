@@ -89,7 +89,6 @@ const io = socketIo(server, {
 io.on("connection", (socket) => {
   console.log("use connect");
   require("./socket.js")(io, socket, messages, con_sql);
-  // require("./socket.js")(io, socket, messages, con_sql);
 });
 
 /* launch server  */
