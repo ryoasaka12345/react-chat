@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { combineReducers } from "redux";
 import socketIOClient from "socket.io-client";
 
@@ -8,7 +9,8 @@ const initialState = { socket: socket };
 const util = (state = initialState, action) => {
   switch (action.type) {
     default:
-      return state;
+      console.log("state: socket");
+      return initialState;
   }
 };
 

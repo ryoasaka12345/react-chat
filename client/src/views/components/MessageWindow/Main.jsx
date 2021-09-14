@@ -1,7 +1,12 @@
-import { ChatMessages } from "../../containers/Chat";
+import { ChatMessages, ChatInput } from "../../containers/Chat";
 
 const MessageWindow = () => {
-  return <ChatMessages />;
+  return (
+    <>
+      <ChatMessages />
+      <ChatInput />
+    </>
+  );
 };
 
 export default MessageWindow;

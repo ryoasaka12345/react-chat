@@ -23,8 +23,17 @@ const Messages = () => {
   // Thus, in the future, I should to consolidate processings regarding socket into a state or somewhere else.
   socket.on("chat", (type, body) => {
     switch (type) {
+      case "message":
+        console.log("get message room Id:", id);
+        var message = body;
+        dispatch(chatOperations.addMessage(message));
+        return;
       case "messages":
-        dispatch(chatOperations.addMessages(body));
+        var messages = body;
+        dispatch(chatOperations.addMessages(messages));
+        return;
+      default:
+        return;
     }
   });
 

@@ -7,8 +7,17 @@ const util = (state = initialState, action) => {
   switch (action.type) {
     case types.INIT_MESSAGES:
       return initialState;
+    case types.ADD_MESSAGE:
+      let newMessage = action.message;
+      if (!!newMessage.author && !!newMessage.content) {
+        state = [
+          ...state,
+          { author: newMessage.author, content: newMessage.content },
+        ];
+      }
+      return state;
     case types.ADD_MESSAGES:
-      const newState = [];
+      var newState = [];
       action.messages.forEach((message) => {
         newState.push(message);
       });
