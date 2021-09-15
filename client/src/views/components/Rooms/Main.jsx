@@ -9,11 +9,22 @@ import { Divider, Row, Col, Card } from "antd";
 import MarketWindow from "../MarketWindow";
 import { CartWindow } from "../CartWindow";
 import { MessageWindow } from "../MessageWindow";
+import { useSelector } from "react-redux";
 
 const Rooms = () => {
   let { path, url } = useRouteMatch();
   const rooms = [0, 1, 2, 3];
   const { id } = useParams();
+  const socket = useSelector((state) => state.socket.util);
+  // console.log(socket);
+  socket
+    .connect()
+    .then(() => {
+      console.log("sucess connect socket");
+    })
+    .catch(() => {
+      console.log("failed connect socket");
+    });
 
   return (
     <>
@@ -59,21 +70,3 @@ const Rooms = () => {
 };
 
 export default Rooms;
-
-{
-  /* <Col span={6}>
-  <Card title="chat board">
-    <Switch>
-      <Route path={path} exact>
-        <div>Select Chat room</div>
-      </Route>
-      <Route path={`${path}/:id`}>
-        <MessageWindow />
-      </Route>
-    </Switch>
-  </Card>
-</Col>
-<Col span={10}>
-  <MarketWindow />
-</Col> */
-}

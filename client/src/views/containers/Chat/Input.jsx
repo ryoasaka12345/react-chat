@@ -15,7 +15,7 @@ const Input = () => {
         content: inputText.current.value,
       },
     };
-    socket.emit("chat", "message", sendItem);
+    // socket.emit("chat", "message", sendItem);
   };
 
   return (

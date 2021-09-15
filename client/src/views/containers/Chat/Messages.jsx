@@ -13,29 +13,29 @@ const Messages = () => {
   const socket = useSelector((state) => state.socket.util.socket);
 
   useEffect(() => {
-    dispatch(chatOperations.initMessages());
-    socket.emit("chat", "leave", currentId);
-    socket.emit("chat", "join", id);
+    dispatch(chatOperations.initMessages()); // dispatch(action)
+    // socket.emit("chat", "leave", currentId);
+    // socket.emit("chat", "join", id);
     setCurrentId(id);
   }, [id]);
 
   // It would be needed to update some state in the background when receive socket.on().
   // Thus, in the future, I should to consolidate processings regarding socket into a state or somewhere else.
-  socket.on("chat", (type, body) => {
-    switch (type) {
-      case "message":
-        console.log("get message room Id:", id);
-        var message = body;
-        dispatch(chatOperations.addMessage(message));
-        return;
-      case "messages":
-        var messages = body;
-        dispatch(chatOperations.addMessages(messages));
-        return;
-      default:
-        return;
-    }
-  });
+  // socket.on("chat", (type, body) => {
+  //   switch (type) {
+  //     case "message":
+  //       console.log("get message room Id:", id);
+  //       var message = body;
+  //       dispatch(chatOperations.addMessage(message));
+  //       return;
+  //     case "messages":
+  //       var messages = body;
+  //       dispatch(chatOperations.addMessages(messages));
+  //       return;
+  //     default:
+  //       return;
+  //   }
+  // });
 
   return (
     <List
