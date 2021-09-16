@@ -10,7 +10,7 @@ const Messages = () => {
   const [currentId, setCurrentId] = useState(id);
   const dispatch = useDispatch();
   const messages = useSelector((state) => state.chat.util);
-  const socket = useSelector((state) => state.socket.util.socket);
+  const socket = useSelector((state) => state.socket.util);
 
   useEffect(() => {
     dispatch(chatOperations.initMessages()); // dispatch(action)

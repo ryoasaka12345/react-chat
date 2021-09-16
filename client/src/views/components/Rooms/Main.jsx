@@ -5,41 +5,48 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
-import { Divider, Row, Col, Card } from "antd";
+import { Divider, Row, Col, Card, Button } from "antd";
 import MarketWindow from "../MarketWindow";
 import { CartWindow } from "../CartWindow";
 import { MessageWindow } from "../MessageWindow";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import "./Rooms.css";
 
 const Rooms = () => {
   let { path, url } = useRouteMatch();
-  const rooms = [0, 1, 2, 3];
-  const { id } = useParams();
   const socket = useSelector((state) => state.socket.util);
-  // console.log(socket);
-  socket
-    .connect()
-    .then(() => {
-      console.log("sucess connect socket");
-    })
-    .catch(() => {
-      console.log("failed connect socket");
-    });
+  const rooms = [0, 1, 2, 3];
+
+  useEffect(() => {
+    socket
+      .connect()
+      .then(() => {
+        console.log("sucess connect socket");
+      })
+      .catch(() => {
+        console.log("failed connect socket");
+      });
+  }, [socket]);
 
   return (
     <>
       <Divider orientation="left">Rooms</Divider>
 
-      <Row gutter={16}>
-        <Col className="gutter-row" span={3} offset={3}>
-          <NavLink to="/">Home</NavLink>
-        </Col>
+      <ul class="nav-bar">
+        <li>
+          <NavLink exact activeClassName="active" to="/">
+            Home
+          </NavLink>
+        </li>
         {rooms.map((roomId) => (
-          <Col className="gutter-row" span={3}>
-            <NavLink to={`${url}/${roomId}`}>Room {roomId}</NavLink>
-          </Col>
+          <li>
+            <NavLink class="nav-link" to={`${url}/${roomId}`}>
+              Room {roomId}
+            </NavLink>
+          </li>
         ))}
-      </Row>
+      </ul>
 
       <Divider orientation="left">Messages</Divider>
 
