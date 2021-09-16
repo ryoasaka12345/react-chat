@@ -13,10 +13,12 @@ const Messages = () => {
   const socket = useSelector((state) => state.socket.util);
 
   useEffect(() => {
-    dispatch(chatOperations.initMessages()); // dispatch(action)
-    // socket.emit("chat", "leave", currentId);
-    // socket.emit("chat", "join", id);
     setCurrentId(id);
+    const chatJoinHandler = async (socket) => {
+      await dispatch(chatOperations.initMessages()); // dispatch(action)
+      socket.test();
+    };
+    chatJoinHandler(socket);
   }, [id]);
 
   // It would be needed to update some state in the background when receive socket.on().

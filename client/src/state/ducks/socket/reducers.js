@@ -2,10 +2,6 @@ import { useMemo } from "react";
 import { combineReducers } from "redux";
 import types from "./types";
 
-// const ENDPOINT = "localhost:5000";
-// const socket = socketIOClient(ENDPOINT);
-// const initialState = { socket: socket };
-
 const util = (state = null, action) => {
   switch (action.type) {
     case types.SET_CONNECTION:

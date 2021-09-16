@@ -1,4 +1,5 @@
 import io from "socket.io-client";
+import * as harbor from "./harbor";
 
 const host = "http://localhost:5000";
 // const socketPath = "/api/socket.io";
@@ -8,6 +9,11 @@ export default class SocketConnection {
 
   constructor() {
     console.log("Constructed SocketConnection");
+  }
+
+  test() {
+    harbor.chat.receiver();
+    harbor.chat.emitter();
   }
 
   connect() {
