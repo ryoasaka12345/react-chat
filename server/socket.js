@@ -15,12 +15,15 @@ const socketHandler = (io, socket, messages, con_sql) => {
     return messages;
   };
 
-  socket.on("chat", (type, body) => {
+  socket.on("chat", (type, body, callback) => {
     switch (type) {
-      case "join":
+      case "JOIN_ROOM":
         var roomId = body;
         socket.join(roomId);
-        socket.emit("chat", (type = "messages"), (body = messages[roomId]));
+        // socket.emit("chat", (type = "messages"), (body = messages[roomId]));
+        callback({
+          messages: messages[roomId],
+        });
         console.log("user join room", roomId);
         return;
       case "leave":

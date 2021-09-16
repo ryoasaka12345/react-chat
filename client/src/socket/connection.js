@@ -2,18 +2,19 @@ import io from "socket.io-client";
 import * as harbor from "./harbor";
 
 const host = "http://localhost:5000";
-// const socketPath = "/api/socket.io";
 
 export default class SocketConnection {
   socket;
+  dispatch;
 
-  constructor() {
+  constructor(dispatch) {
+    this.dispatch = dispatch;
     console.log("Constructed SocketConnection");
   }
 
   test() {
     harbor.chat.receiver();
-    harbor.chat.emitter();
+    harbor.chat.emitter(this.dispatch, this.socket, "CONNECTION_TEST");
   }
 
   connect() {
@@ -33,19 +34,30 @@ export default class SocketConnection {
     });
   }
 
-  emit(event, type, body) {
-    return new Promise((resolve, reject) => {
-      if (!this.socket) return reject("No socket connection.");
-
-      return this.socket.emit(type, event, body, (response) => {
-        if (response.error) {
-          console.error(response.error);
-          return reject(response.error);
-        }
-        return resolve();
-      });
-    });
+  emit(type, event, body) {
+    switch (type) {
+      case "chat":
+        harbor.chat.emitter(this.dispatch, this.socket, event, body);
+        return;
+      default:
+        console.log("unspecific type");
+        return;
+    }
   }
+
+  // emit(event, type, body) {
+  //   return new Promise((resolve, reject) => {
+  //     if (!this.socket) return reject("No socket connection.");
+
+  //     return this.socket.emit(type, event, body, (response) => {
+  //       if (response.error) {
+  //         console.error(response.error);
+  //         return reject(response.error);
+  //       }
+  //       return resolve();
+  //     });
+  //   });
+  // }
 
   on(event, type, body) {
     return new Promise((resolve, reject) => {

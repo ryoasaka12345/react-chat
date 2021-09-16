@@ -16,7 +16,7 @@ const Messages = () => {
     setCurrentId(id);
     const chatJoinHandler = async (socket) => {
       await dispatch(chatOperations.initMessages()); // dispatch(action)
-      socket.test();
+      socket.emit("chat", "JOIN_ROOM", id);
     };
     chatJoinHandler(socket);
   }, [id]);

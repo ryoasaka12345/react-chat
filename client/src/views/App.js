@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 
 function App() {
   const dispatch = useDispatch();
-  const socket = new SocketConnection();
+  const socket = new SocketConnection(dispatch);
   dispatch({ type: `SET_CONNECTION`, connection: socket });
   return (
     <>
